@@ -12,22 +12,25 @@ namespace DAL
     {
         public string UserLoginName { get; set; }
 
-        public string CheckUser(string user, string pass)
+        public string[] CheckUser(string user)
         {
             SqlDataReader dr = null;
-            SqlCommand cmd = new SqlCommand("SELECT * FROM Users WHERE UserName=@user AND Password=@pass", OpenCon() );
+            SqlCommand cmd = new SqlCommand("SELECT * FROM Users WHERE UserName=@user", OpenCon() );
             cmd.Parameters.AddWithValue("@user", user);
-            cmd.Parameters.AddWithValue("@pass", pass);
 
             dr = cmd.ExecuteReader();
             if(dr.Read())
             {
-                return UserLoginName = dr.GetString(3);
+                string[] ret = new string[5];
+                for (int i=0; i<5; i++)
+                {
+                    ret[i]=dr.GetString(i);
+                }
+                return ret;
             }
             else
             {
-                string no = "no";
-                return no;
+                return null;
             }
 
         }

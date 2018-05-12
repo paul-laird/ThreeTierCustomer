@@ -22,14 +22,15 @@ namespace BIZ
 
         public string CheckUserPass()
         {
-            string login = cl.CheckUser(Username, Password);
-            if(login == "no")
+            string[] info = cl.CheckUser(Username);
+            if(info == null)
             {
                 return "no";
             }
             else
             {
-                return login;
+
+                return info[4];//uid, username, salt, passwordhash, 3:name
             }
 
         }

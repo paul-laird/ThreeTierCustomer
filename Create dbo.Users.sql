@@ -1,0 +1,19 @@
+﻿USE [R:\VS\THREETIERCUSTOMER\THREETIERCUSTOMER\THREETIERCUSTOMER\MYSHOP.MDF]
+GO
+
+/****** Object: Table [dbo].[Users] Script Date: 12/05/2018 14:39:36 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+DROP TABLE Users
+CREATE TABLE [dbo].[Users] (
+    [UserId]   INT           IDENTITY (1, 1) NOT NULL,
+    [UserName] NVARCHAR (50) NULL,
+    [Salt] NVARCHAR (50) NULL,
+    [Password] NVARCHAR (50) NULL,
+    [FullName] NVARCHAR (50) NULL
+);
+
+
