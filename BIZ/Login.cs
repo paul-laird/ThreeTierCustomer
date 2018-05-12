@@ -29,8 +29,10 @@ namespace BIZ
             }
             else
             {
-
-                return info[4];//uid, username, salt, passwordhash, 3:name
+                if (info[2]+info[3] == Password)
+                    return info[4];//uid, username, salt, passwordhash, 3:name
+                else
+                    return "no";
             }
 
         }

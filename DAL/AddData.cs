@@ -11,8 +11,10 @@ namespace DAL
     {
         public void AddUser (string uname, string upass, string ufullname)
         {
-            SqlCommand cmd = new SqlCommand("INSERT INTO Users (UserName,Password,FullName) VALUES (@uname,@pass,@fullname)",OpenCon());
+            Random r = new Random();
+            SqlCommand cmd = new SqlCommand("INSERT INTO Users (UserName,Salt,Password,FullName) VALUES (@uname,@salt,@pass,@fullname)",OpenCon());
             cmd.Parameters.AddWithValue("@uname", uname);
+            cmd.Parameters.AddWithValue("@salt", r.Next());
             cmd.Parameters.AddWithValue("@pass", upass);
             cmd.Parameters.AddWithValue("@fullname", ufullname);
             cmd.ExecuteNonQuery();
