@@ -24,7 +24,7 @@ namespace DAL
                 string[] ret = new string[5];
                 for (int i=0; i<5; i++)
                 {
-                    ret[i]=dr.GetString(i);
+                    ret[i]=""+dr[i];
                 }
                 return ret;
             }
